@@ -10,4 +10,8 @@ ansible all -m file -a "path=/home/test/test.conf owner=root group=test mode=177
 ansible all -m file -a "src=/home/test/test.conf dest=/home/test/test.conf1 owner=root group=test state=link" -b
 #name: Touch again the same file, but dont change times this makes the task idempotent
 ansible all -m file -a "path=/home/test/test.conf state=touch mode=0640 modification_time=preserve access_time=preserve" -b
+#- name: Create a directory if it does not exist
+ansible all -m file -a "path=/etc/test state=directory mode=0755" -b
+#name: Update modification and access time of given file
+ansible all -m file -a "path="
 
