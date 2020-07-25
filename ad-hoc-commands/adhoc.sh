@@ -13,5 +13,11 @@ ansible all -m file -a "path=/home/test/test.conf state=touch mode=0640 modifica
 #- name: Create a directory if it does not exist
 ansible all -m file -a "path=/etc/test state=directory mode=0755" -b
 #name: Update modification and access time of given file
-ansible all -m file -a "path="
+ansible all -m file -a "path=/home/test/test.conf state=file modification_time=now access_time=now" -b
+#name: Recursively change ownership of a directory
+ansible all -m file -a "path=/tmp/bibek state=directory recurse=yes owner=test group=test" -b
+#name: Remove file (delete file)
+ansible all -m file -a "path=/tmp/bibek/file10 state=absent"
+#name: Remove directory recursively
+ansible all -m file -a "path=/tmp/bibek state=absent"
 
