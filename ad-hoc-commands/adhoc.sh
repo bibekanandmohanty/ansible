@@ -89,6 +89,12 @@ ansible all -m lineinfile -a "path=/tmp/sample.txt regexp='an unforseen error ha
 #name: Insert a string after finding the first match
 ansible all -m lineinfile -a "path=/tmp/sample.txt insertafter='Refresh button' line='hello this is bibekanand' "
 #name: Insert a line before a line
+##################################package module############################################################
+#name: install ntpdate
+ansible all -m package -a "name=ntpdate state=present"
+#name: remove the apache package
+ansible all -m package -a "name=apache state=absent"
+
 ansible all -m lineinfile -a "path=/tmp/sample.txt insertbefore='an unforseen error*' line='hello this is bibekanand' state=present"
 
 
