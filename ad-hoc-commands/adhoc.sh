@@ -48,6 +48,23 @@ ansible all -m yum -a "name='*' state=latest"
 ansible all -m yum -a "name='*' state=latest exclude=kernel*,foo*"
 #name: install the nginx rpm from a remote repo
 ansible all -m yum -a "name=/usr/local/src/nginx-release-centos-6-0.el6.ngx.noarch.rpm state=present"
+################################Service module######################################################
+#name: Start service httpd, if not started
+ansible all -m service -a "name=httpd state=started"
+#name: Stop service httpd, if started
+ansible all -m service -a "name=httpd state=stopped"
+#name: Restart service httpd, in all cases
+ansible all -m service -a "name=httpd state=restarted"
+#name: Reload service httpd, in all cases
+ansible all -m service -a "name=httpd state=reloaded"
+#name: Enable service httpd, and not touch the state
+ansible all -m service -a "name=httpd state=enabled"
+#name: Start service foo, based on running process /usr/bin/foo
+ansible all -m service -a "name=foo pattern=/usr/bin/foo state=started"
+#name: Restart network service for interface eth0
+ansible all -m service -a "name"
+
+
 
 
 
