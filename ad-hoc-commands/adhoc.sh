@@ -79,7 +79,16 @@ ansible all -m copy -a "src=/srv/myfiles/foo.conf dest=/etc/foo.conf owner=foo g
 ansible all -m copy -a "src=/srv/myfiles/foo.conf dest=/etc/foo.conf owner=foo group=foo mode=0644 backup=yes"
 #name: Copy using inline content
 ansible all -m copy -a "content='# This file was moved to /etc/other.conf' dest=/etc/mine.conf" 
-
-
+################################lineinfile##############################################################
+#name: "Example1: Validate if a String or line is present in the file"
+ansible all -m lineinfile -a "path=/tmp/sample.txt line='an unforseen error has occured and processing has been stopped.' state=present"
+#name: "Replacing a line"
+ansible all -m lineinfile -a "path=/tmp/sample.txt regexp='an unforseen error has occured and processing has been stopped.' line='an unforseen error has occured and processed had been stopped.' state=present backup=yes"
+#name: Remove a line from a file if it is found all instances
+ansible all -m lineinfile -a "path=/tmp/sample.txt regexp='an unforseen error has occured and processed had been stopped.' state=absent backup=yes"
+#name: Insert a string after finding the first match
+ansible all -m lineinfile -a "path=/tmp/sample.txt insertafter='Refresh button' line='hello this is bibekanand' "
+#name: Insert a line before a line
+ansible all -m lineinfile -a "path=/tmp/sample.txt insertbefore='an unforseen error*' line='hello this is bibekanand' state=present"
 
 
