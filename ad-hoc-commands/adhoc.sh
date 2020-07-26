@@ -1,6 +1,7 @@
 ansible all -m ping
 ansible all -m shell -a "free -m"
 ansible all -m shell -a "cat /proc/meminfo|head -2"
+###########################file module#############################################################################
 ansible all -m file -a "path=/home/test/xyz.txt state=directory mode=0755"# creating a directory
 #name: Change file ownership, group and permissions
 ansible all -m file -a "path=/home/test/test.conf owner=test group=test mode=0644 state=touch"
