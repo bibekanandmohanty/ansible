@@ -63,7 +63,22 @@ ansible all -m service -a "name=httpd state=enabled"
 ansible all -m service -a "name=foo pattern=/usr/bin/foo state=started"
 #name: Restart network service for interface eth0
 ansible all -m service -a "name"
-
+#############################fetch module#############################################################
+#name: Store file into /tmp/fetched/host.example.com/tmp/somefile
+ansible all -m fetch -a "src=/tmp/somefile dest=/tmp/fetched"
+#name: Specifying a path directly
+ansible all -m fetch -a "src=/tmp/somefile dest=/tmp/prefix-{{ inventory_hostname }} flat=yes"
+#name: Specifying a destination path
+ansible all -m fetch -a "src=/tmp/uniquefile dest=/tmp/special flat=yes"
+#name: Storing in a path relative to the playbook
+ansible all -m fetch -a "src=/tmp/uniquefile dest=special/prefix-{{ inventory_hostname }} flat=yes"
+############################copy module############################################################
+#name: Copy file with owner and permissions
+ansible all -m copy -a "src=/srv/myfiles/foo.conf dest=/etc/foo.conf owner=foo group=foo mode=0644"
+#name: Copy a new "ntp.conf file into place, backing up the original if it differs from the copied version
+ansible all -m copy -a "src=/srv/myfiles/foo.conf dest=/etc/foo.conf owner=foo group=foo mode=0644 backup=yes"
+#name: Copy using inline content
+ansible all -m copy -a "content='# This file was moved to /etc/other.conf' dest=/etc/mine.conf" 
 
 
 
