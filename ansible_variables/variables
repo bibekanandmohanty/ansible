@@ -1,0 +1,20 @@
+Default variables 
+Inventory variables
+facts and local facts,etc.....
+
+Default_variables : inventory_hostname
+inventory_hostname_short
+groups/groups.keys
+
+ansible all -m debug -a "msg='This is a debug module'"
+ansible all -m debug -a "var=inventory_hostname"
+ansible all -m debug -a "msg={{ inventory_hostname }}"
+
+#to find out the list of ggroups in the inventory
+ansible localhost -m debug "vars=groups"
+ansible localhost -m debug "vars=groups.keys()"
+
+
+
+
+
