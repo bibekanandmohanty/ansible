@@ -1,0 +1,9 @@
+---
+ - name: to display tthe variable x
+   hosts: all
+   gather_facts: false
+   vars:
+                x: 23
+   tasks:
+   - debug: var=x
+   

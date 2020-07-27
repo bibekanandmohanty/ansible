@@ -1,0 +1,15 @@
+---
+ - name: to display tthe variables
+   hosts: all
+   gather_facts: false
+   vars:
+                x: 23
+                y: 24
+                my_name: bibekanand
+   tasks:
+   - debug: 
+                msg:
+                        - "the value of x is: {{x}}"
+                        - "the value of y is: {{y}}"
+                        - "the value of my_name is: {{my_name}}"
+   

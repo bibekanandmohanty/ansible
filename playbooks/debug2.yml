@@ -1,0 +1,13 @@
+---
+ - name: to display tthe variables
+   hosts: all
+   gather_facts: false
+   vars:
+                x: 23
+                y: 24
+                my_name: bibekanand
+   tasks:
+   - debug: var=x 
+   - debug: var=y
+   - debug: var=my_name 
+   
