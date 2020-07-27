@@ -5,12 +5,12 @@
    - yum: 
         name: wget 
         state: present
- - hosts: group1
+ - hosts: all
    become: yes
    tasks:
    - yum: name=httpd state=present
    - yum: name=vim state=present
- - hosts: group2
+ - hosts: all
    become: yes
    tasks:
    - yum: name=httpd state=present
