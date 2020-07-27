@@ -1,0 +1,17 @@
+---
+ - name: simple playbook for group1
+   hosts: group1
+   gather_facts: false
+   tasks:
+   - name: task 2 copy a file
+     copy: src=hosts dest=hosts
+   - name: task 2 create a empty file
+     file: path=/tmp/demo.txt state=touch
+ - name: simple playbook for group2
+   hosts: group2
+   gather_facts: false
+   tasks:
+   - name: task 2 copy a file
+     copy: src=hosts dest=hosts
+   - name: task 2 create a empty file
+     file: path=/tmp/demo.txt state=touch
