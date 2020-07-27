@@ -23,4 +23,5 @@ rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 yum install jenkins -y
 systemctl start jenkins
 chkconfig jenkins on
+echo "jenkins    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 scl enable rh-python36 bash
