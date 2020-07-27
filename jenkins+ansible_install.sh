@@ -24,6 +24,7 @@ yum install jenkins -y
 systemctl start jenkins
 chkconfig jenkins on
 echo "jenkins    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
+mkdir /var/lib/jenkins/.ssh/
 echo "Host *" >> /var/lib/jenkins/.ssh/config
 echo "   StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
 chown -R jenkins:jenkins /var/lib/jenkins/.ssh
