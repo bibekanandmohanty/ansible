@@ -1,0 +1,13 @@
+---
+ - name: this is a simple play to understand the debug module
+   hosts: all
+   become: yes
+   tasks:
+   - name: printing a message to understand the debug module
+     debug: msg="hello this is handsome bibekanand"
+   - name: printing a message to understand the debug_var module
+     debug: var=inventory_hostname
+   - name: printing a message to understand the debug module with inventory
+     debug: msg="hello this is handsome bibekanand {{ inventory_hostname }}"
+   - name: printing a message to understand the debug_var module
+     debug: var=inventory_hostname
