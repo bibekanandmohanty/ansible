@@ -24,4 +24,9 @@ yum install jenkins -y
 systemctl start jenkins
 chkconfig jenkins on
 echo "jenkins    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
+echo "Host *" >> /var/lib/jenkins/.ssh/config
+echo "   StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
+chown -R jenkins:jenkins /var/lib/jenkins/.ssh
+chmod 400 /var/lib/jenkins/.ssh/config
+service sshd restart
 scl enable rh-python36 bash
