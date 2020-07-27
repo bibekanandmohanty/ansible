@@ -44,9 +44,5 @@
 [all:vars]
 ansible_ssh_user=test
 ansible_ssh_pass=test
-[group1]
-172.31.40.51
-[group2]
-172.31.45.5
 [local]
 localhost

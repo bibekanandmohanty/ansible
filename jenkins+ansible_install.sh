@@ -12,9 +12,10 @@ echo "$username:$pass" | chpasswd
 usermod -aG wheel $username
 echo "$username    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+mkdir /home/test/.ssh
 echo "Host *" >> /home/test/.ssh/config
 echo "   StrictHostKeyChecking no" >> /home/test/.ssh/config
-chown test:test /home/test/.ssh/config
+chown -R test:test /home/test/.ssh/
 chmod 400 /home/test/.ssh/config
 service sshd restart
 wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
