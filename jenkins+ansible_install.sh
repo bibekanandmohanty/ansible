@@ -43,9 +43,9 @@ echo "   StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
 chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 chmod 400 /var/lib/jenkins/.ssh/config
 service sshd restart
-scl enable rh-python36 bash
 cd /root
 git clone git@github.com:bibekanandmohanty/ansible.git
 cd ansible
 cp -rvf hosts /etc/ansible/hosts
 cp -rvf ansible.cfg /etc/ansible/ansible.cfg
+scl enable rh-python36 bash
