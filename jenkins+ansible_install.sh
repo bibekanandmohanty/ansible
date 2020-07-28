@@ -12,6 +12,12 @@ echo "$username:$pass" | chpasswd
 usermod -aG wheel $username
 echo "$username    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+mkdir /root/.ssh
+touch /root/.ssh/id_rsa
+touch /root/.ssh/id_rsa.pub
+chmod 400 /root/.ssh/id_rsa
+echo "Host *" >> /root/.ssh/config
+echo "   StrictHostKeyChecking no" >> /root/.ssh/config
 mkdir /home/test/.ssh
 echo "Host *" >> /home/test/.ssh/config
 echo "   StrictHostKeyChecking no" >> /home/test/.ssh/config
@@ -33,3 +39,4 @@ chown -R jenkins:jenkins /var/lib/jenkins/.ssh
 chmod 400 /var/lib/jenkins/.ssh/config
 service sshd restart
 scl enable rh-python36 bash
+
