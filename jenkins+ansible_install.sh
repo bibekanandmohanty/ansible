@@ -25,6 +25,8 @@ systemctl start jenkins
 chkconfig jenkins on
 echo "jenkins    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 mkdir /var/lib/jenkins/.ssh/
+touch /var/lib/jenkins/.ssh/id_rsa
+touch /var/lib/jenkins/.ssh/id_rsa.pub
 echo "Host *" >> /var/lib/jenkins/.ssh/config
 echo "   StrictHostKeyChecking no" >> /var/lib/jenkins/.ssh/config
 chown -R jenkins:jenkins /var/lib/jenkins/.ssh
