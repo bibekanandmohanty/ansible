@@ -48,4 +48,5 @@ git clone git@github.com:bibekanandmohanty/ansible.git
 cd ansible
 cp -rvf hosts /etc/ansible/hosts
 cp -rvf ansible.cfg /etc/ansible/ansible.cfg
-scl enable rh-python36 bash
+yum install maven -y
+
