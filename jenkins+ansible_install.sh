@@ -4,8 +4,8 @@ username="test"
 pass="test"
 shift 2
 fname="$*"
-for each in vim wget httpd git java-1.8.0-openjdk-devel centos-release-scl rh-python36 scl-utils epel-release ; do yum install -y $each ; done
 yum update -y
+for each in vim wget httpd git java-1.8.0-openjdk-devel centos-release-scl rh-python36 scl-utils epel-release ; do yum install -y $each ; done
 yum -y install ansible
 adduser "$username"
 echo "$username:$pass" | chpasswd
