@@ -23,3 +23,4 @@ echo "JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom -Djava.awt.headless=tru
 yum install tomcat-webapps tomcat-admin-webapps -y
 cat /root/ansible/tomcat-users.xml > /etc/tomcat/tomcat-users.xml
 systemctl restart tomcat
+chkconfig tomcat on
