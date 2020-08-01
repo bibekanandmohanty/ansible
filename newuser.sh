@@ -30,3 +30,4 @@ cat /root/ansible/tomcat-users.xml > /etc/tomcat/tomcat-users.xml
 systemctl restart tomcat
 chkconfig tomcat on
 yum install maven -y
+hostnamectl set-hostname client$1
