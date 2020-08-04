@@ -9,3 +9,6 @@
      - debug:
          msg:
            - "the value of x is: {{x}}, the value of y is: {{y}} and the value of z list is {{z}}"
+           - "x < y and y in z: {{ x < y and y in z }}"
+           - "{{(4 < 5) and (5 > 1) and (5 > 2) and (9 == 0)}}"
+           - "{{(4 < 5) or (5 > 1) or (5 > 2) or (9 == 0)}}"
