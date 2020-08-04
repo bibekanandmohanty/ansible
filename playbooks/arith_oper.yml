@@ -1,0 +1,13 @@
+---
+ - hosts: all
+   gather_facts: false
+   vars:
+     x: 34
+     y: 45
+   tasks:
+   - debug:
+           msg: 
+           - "The value of x + y is {{x+y}}"
+           - "The value of x - y is {{x-y}}"
+           - "The value of x * y is {{x*y}}"
+           - "The value of x / y is {{x/y}}"
