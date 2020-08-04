@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   gather_facts: false
+   become: yes
+   tasks:
+   - name: working with {{pkg}}
+     yum:
+        name: "{{pkg}}"
+        state: "{{req_state}}"
