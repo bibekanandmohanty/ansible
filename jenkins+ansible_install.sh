@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+hostnamectl set-hostname ansible
 username="test"
 pass="test"
 shift 2
