@@ -1,0 +1,20 @@
+---
+ - name: practice on arith operators
+   hosts: all
+   gather_facts: false
+   vars_prompt:
+                - name: x
+                  prompt: Please enter x vaalue
+                  private: no      
+                - name: y
+                  prompt: Please enter y vaalue
+                  private: no      
+   vars:
+        a: 42
+   tasks:
+   - debug:
+           msg:
+           - "The value of x is {{x}}"
+           - "The value of y is {{y}}"
+           - "The sum of {{x}} and {{y}} is {{y|int + x|int}}"
+           - "The sum of {{a}} and {{y}} is {{y|int + a}}"

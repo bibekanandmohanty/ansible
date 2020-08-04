@@ -1,0 +1,12 @@
+---
+ - name: practice on arith operators
+   hosts: all
+   gather_facts: false
+   vars:
+        x: 5
+        y: "{{x+10}}"
+   tasks:
+        - debug:
+                msg:
+                - "The value of x is {{x}}"
+                - "The value of y is {{y}}"
