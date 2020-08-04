@@ -1,0 +1,11 @@
+---
+ - hosts: all
+   gather_facts: false
+   vars:
+     x: 5
+     y: 7
+     z: [3,5,6]
+   tasks:
+     - debug:
+         msg:
+           - "the value of x is: {{x}}, the value of y is: {{y}} and the value of z list is {{z}}"
