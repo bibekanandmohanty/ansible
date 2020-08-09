@@ -29,4 +29,5 @@ cd /root
 git clone git@github.com:bibekanandmohanty/ansible.git
 cd ansible
 cp -rvf hosts /etc/ansible/hosts
+cp -rvf ansible.cfg /etc/ansible/ansible.cfg
 hostnamectl set-hostname $1
