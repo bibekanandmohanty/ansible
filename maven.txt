@@ -1,0 +1,52 @@
+											***************MAVEN*****************
+Maven is used for:
+				build
+				dependancy management
+				releases
+				documentation
+				test executions			
+
+Maven prefers conventions over configurations
+
+Conventions: 
+			File structure								
+            File names
+Maven uses a file known as pom.xml to define :
+												dependancies
+												project info
+												plugins
+												
+pom.xml: Its a file which defines :
+									project info
+									dependancies
+									plugins
+									profiles
+Structure:
+		<groupid>												
+		<artifactid>
+		<type>
+		<version>
+		
+Maven folder conventions:
+						Code: <projectdirectory>/src/main/java
+						Location of pom: <projectdirectory>/pom.xml
+						Test: <projectdirectory>/src/test/java/
+						Target folder: <projectdirectory>/target
+						
+Goals:
+		compile : compile the code
+		test : compile the code + test the code
+		package : test the code + package the application
+		install : pushes the pom file to the local repo
+		deploy : pushes the jar/war file to the remote repo
+		clean : remove the target folder
+		
+Executing Goals:
+				single goals :
+					mvn compile
+					mvn test
+				multi goals:
+					mvn clean package
+		
+		
+		
