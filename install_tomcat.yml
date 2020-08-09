@@ -1,0 +1,23 @@
+---
+ - hosts: all
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: tomcat
+        state: present
+   - yum:
+        name: tomcat-webapps
+        state: present
+   - yum:
+        name: tomcat-admin-webapps
+        state: present
+   - yum:
+        name: java-1.8.0-openjdk-devel
+        state: present
+   - copy:
+        src: /root/ansible/tomcat-users.xml
+        dest: /etc/tomcat/tomcat-users.xml
+   - service:
+        name: tomcat
+        state: restarted
