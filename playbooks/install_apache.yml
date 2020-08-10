@@ -1,0 +1,77 @@
+---
+ - hosts: centos
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: '*'
+        state: latest
+   - yum:
+        name: httpd
+        state: present
+     notify: 
+        - restart httpd
+   - yum:
+        name: mariadb-server
+        state: present
+   - yum:
+        name: mariadb
+        state: present
+   - service:
+        name: mariadb
+        enabled: yes
+        state: started
+   - yum:
+        name: php
+        state: present
+   - yum:
+        name: php-mysql
+        state: present
+     notify: 
+        - restart httpd
+   handlers:
+   - name: restart httpd
+     service:
+        name: httpd
+        enabled: yes
+        state: restarted
+    
+ - hosts: ubuntu
+   gather_facts: false
+   become: yes
+   tasks:
+   - apt:
+        name: '*'
+        state: present
+   - apt:
+        name: apache2
+        state: present
+     notify:
+        - restart apache2
+   - apt:
+        name: mysql-server
+        state: present
+   - service:
+        name: mysql
+        enabled: yes
+        state: started
+   - apt:
+        name: php
+        state: latest
+   - apt:
+        name: libapache2-mod-php
+        state: latest
+   - apt:
+        name: php-mysql
+        state: latest
+   - apt:
+        name: php-cli
+        state: latest
+     notify:
+        - restart apache2
+   handlers:
+   - name: restart apache2
+     service:
+        name: apache2
+        enabled: yes
+        state: restarted

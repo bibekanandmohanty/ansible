@@ -1,0 +1,85 @@
+---
+ - hosts: centos
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: '*'
+        state: latest
+   - yum:
+        name: "{{ item }}"
+        state: latest
+     loop:
+        - httpd
+     notify: 
+        - restart httpd
+   - yum:
+        name: "{{ item }}"
+        state: latest
+     loop:
+        - mariadb-server
+        - mariadb
+     notify: 
+        - restart mysql
+   - yum:
+        name: "{{ item }}"
+        state: latest
+     loop:
+        - php
+        - php-mysql
+     notify: 
+        - restart httpd
+   handlers:
+   - name: restart httpd
+     service:
+        name: httpd
+        enabled: yes
+        state: restarted
+   - name: restart mysql
+     service:
+        name: mariadb
+        enabled: yes
+        state: started
+    
+ - hosts: ubuntu
+   gather_facts: false
+   become: yes
+   tasks:
+   - apt:
+        name: '*'
+        state: latest
+   - apt:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - apache2
+     notify:
+        - restart apache2
+   - apt:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - mysql-server
+     notify:
+        - restart mysql
+   - apt:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - php
+        - libapache2-mod-php
+        - php-mysql
+        - php-cli
+     notify:
+        - restart apache2
+   handlers:
+   - name: restart apache2
+     service:
+        name: apache2
+        enabled: yes
+        state: restarted
+   - name: restart mysql
+     service:
+        name: mysql
+        enabled: yes
+        state: restarted
