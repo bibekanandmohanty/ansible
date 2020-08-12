@@ -18,10 +18,19 @@
         - php-mysql
         - https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
         - mysql-server
+        - tomcat
+        - tomcat-webapps 
+        - tomcat-admin-webapps
+        - tomcat-docs-webapp
+        - tomcat-javadoc
      notify:
         - restart httpd
         - restart mysql
-
+   - copy:
+        src: /root/mysql/tomcat-users.xml
+        dest: /usr/share/tomcat/conf/
+     notify:
+        - restart tomcat
 
    handlers:
    - name: restart httpd
@@ -32,6 +41,11 @@
    - name: restart mysql
      service:
        name: mysqld
+       enabled: yes
+       state: restarted
+   - name: restart tomcat
+     service:
+       name: tomcat
        enabled: yes
        state: restarted
 

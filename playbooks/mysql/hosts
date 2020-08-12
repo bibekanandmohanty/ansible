@@ -45,5 +45,5 @@
 ansible_ssh_user=test
 ansible_ssh_pass=test
 [local]
-172.31.47.121
-172.31.43.94
+172.31.5.160
+172.31.12.251
