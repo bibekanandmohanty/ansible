@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - yum:
+      name: https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+      state: present
+  - yum:
+      name: mysql-server
+      state: present
+  - service:
+      name: mysqld
+      enabled: yes
+      state: started

@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+  - shell: systemctl status mysqld
+    register: out
+  - debug: var=out
