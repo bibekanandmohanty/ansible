@@ -1,0 +1,53 @@
+---
+ - hosts: web
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - httpd
+        - php
+        - php-mysql
+        - https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+        - mysql-server
+     notify:
+        - restart httpd
+        - restart mysql
+   handlers:
+   - name: restart httpd
+     service:
+       name: httpd
+       enabled: yes
+       state: restarted
+   - name: restart mysql
+     service:
+       name: mysqld
+       enabled: yes
+       state: restarted
+ - hosts: tomcat
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - tomcat
+        - tomcat-webapps 
+        - tomcat-admin-webapps
+        - tomcat-docs-webapp
+        - tomcat-javadoc
+   - copy:
+        src: /root/ansible/tomcat-users.xml
+        dest: /usr/share/tomcat/conf/
+     notify:
+        - restart tomcat
+   handlers:
+   - name: restart tomcat
+     service:
+       name: tomcat
+       enabled: yes
+       state: restarted
+
