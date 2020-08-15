@@ -27,7 +27,7 @@
         - restart httpd
         - restart mysql
    - copy:
-        src: /root/mysql/tomcat-users.xml
+        src: /root/ansible/tomcat-users.xml
         dest: /usr/share/tomcat/conf/
      notify:
         - restart tomcat
