@@ -15,17 +15,17 @@
    - copy:
         src: /var/lib/jenkins/workspace/install_apache/playbooks/install_only_apache/index.html
         dest: /var/www/html/index.html
-     when: ansible_host == "172.31.47.18"
      notify:
         - restart httpd
         - restart mysql
+     when: ansible_host == "172.31.2.13"
    - copy:
         src: /var/lib/jenkins/workspace/install_apache/playbooks/install_only_apache/index1.html
         dest: /var/www/html/index.html
-     when: ansible_host == "172.31.40.78"
      notify:
         - restart httpd
         - restart mysql
+     when: ansible_host == "172.31.40.78"
    handlers:
    - name: restart httpd
      service:
