@@ -16,6 +16,9 @@
         src: /var/lib/jenkins/workspace/install_apache/playbooks/install_only_apache/index.html
         dest: /var/www/html/index.html
      when: ansible_host == "localhost"
+     notify:
+        - restart httpd
+        - restart mysql
    - copy:
         src: /var/lib/jenkins/workspace/install_apache/playbooks/install_only_apache/index1.html
         dest: /var/www/html/index.html
