@@ -12,12 +12,17 @@
         - php-mysql
         - https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
         - mysql-server
-     notify:
-        - restart httpd
-        - restart mysql
     - copy:
          src: /root/ansible/playbooks/install_only_apache/index.html
          dest: /var/www/index.html
+      when: ansible_host=localhost
+    - copy:
+         src: /root/ansible/playbooks/install_only_apache/index1.html
+         dest: /var/www/index.html
+      when: ansible_host=172.31.40.78
+     notify:
+        - restart httpd
+        - restart mysql
    handlers:
    - name: restart httpd
      service:
