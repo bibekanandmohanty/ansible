@@ -16,7 +16,7 @@
         - restart httpd
         - restart mysql
     - copy:
-         src: /root/index.html
+         src: /root/ansible/playbooks/install_only_apache/index.html
          dest: /var/www/index.html
    handlers:
    - name: restart httpd
