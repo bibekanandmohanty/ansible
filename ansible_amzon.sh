@@ -5,7 +5,7 @@ pass="test"
 fname="$*"
 yum update -y
 for each in vim wget httpd git java-1.8.0-openjdk-devel centos-release-scl rh-python36 scl-utils epel-release ; do yum install -y $each ; done
-yum --enablerepo=epel install ansible
+yum --enablerepo=epel install ansible -y
 adduser "$username"
 echo "$username:$pass" | chpasswd
 usermod -aG wheel $username
@@ -30,4 +30,4 @@ git clone git@github.com:bibekanandmohanty/ansible.git
 cd ansible
 cp -rvf hosts /etc/ansible/hosts
 cp -rvf ansible.cfg /etc/ansible/ansible.cfg
-hostnamectl set-hostname $1
+hostnamectl set-hostname ansible
