@@ -1,0 +1,42 @@
+---
+ - name: install tomcat
+   hosts: all
+   become: yes
+   gather_facts: false
+   vars:
+    req_java: java-1.8.0-openjdk-devel
+    set_java: jre-1.8.0-openjdk
+    tomcat_port: 8081
+   tasks:
+    - name: updating repos
+      yum:
+       name: '*'
+       state: latest
+    - name: installing java
+      yum:
+       name: java-1.8.0-openjdk-devel
+       state: present
+    - name: installing java
+      yum:
+       name: java-1.7.0-openjdk-devel
+       state: present
+    - name: java settings
+      alternatives:
+       name: java
+       link: /usr/bin/java
+       path: /usr/lib/jvm/jre-1.8.0-openjdk/bin/java 
+    - name: download tomcat
+      get_url:
+       url: https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.37/bin/apache-tomcat-9.0.37.tar.gz
+       dest: /usr/local 
+    - name: extract tomcat
+      unarchive:
+       src: /usr/local/apache-tomcat-9.0.37.tar.gz
+       dest: /usr/local/
+       remote_src: yes
+    - name: copying server.xml
+      template:
+       src: server.xml.j2
+       dest: /usr/local/apache-tomcat-9.0.37/conf/server.xml
+    - name: starting tomcat
+      shell: nohup /usr/local/apache-tomcat-9.0.37/bin/startup.sh
