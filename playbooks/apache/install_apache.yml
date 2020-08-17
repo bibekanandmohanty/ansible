@@ -18,14 +18,7 @@
      notify:
         - restart httpd
         - restart mysql
-     when: ansible_host == "172.31.40.239"
-   - copy:
-        src: /root/apache/index1.html
-        dest: /var/www/html/index.html
-     notify:
-        - restart httpd
-        - restart mysql
-     when: ansible_host == "172.31.34.251"
+        - selinux
    handlers:
    - name: restart httpd
      service:
@@ -37,6 +30,11 @@
        name: mysqld
        enabled: yes
        state: restarted
+   - name: selinux
+     seboolean:
+       name: httpd_can_network_connect
+       state: yes
+       persistent: yes
 
  - hosts: tomcat
    gather_facts: false
