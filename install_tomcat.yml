@@ -4,17 +4,38 @@
    become: yes
    tasks:
    - yum:
-        name: tomcat
-        state: present
+        name: "*"
+        state: latest
    - yum:
-        name: tomcat-webapps
+        name: "{{ item }}"
         state: present
-   - yum:
-        name: tomcat-admin-webapps
-        state: present
-   - yum:
-        name: java-1.8.0-openjdk-devel
-        state: present
+     loop:
+        - tomcat-webapps
+        - tomcat-admin-webapps
+        - tomcat-docs-webapp
+        - tomcat-javadoc
+        - java-1.8.0-openjdk-devel
+        - git
+        - maven
+   - file:
+        path: /home/test/.ssh
+        state: directory
+        owner: test
+        group: test
+   - copy:
+        src: /root/ansible/id_rsa
+        dest: /home/test/.ssh
+        owner: test
+        group: test
+        mode: 0400
+   - copy:
+        src: /root/ansible/id_rsa.pub
+        dest: /home/test/.ssh
+        owner: test
+        group: test
+   - copy:
+        src: /root/.ssh/config
+        dest: /home/test/.ssh
    - copy:
         src: /root/ansible/tomcat-users.xml
         dest: /etc/tomcat/tomcat-users.xml
