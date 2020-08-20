@@ -1,0 +1,111 @@
+pipeline 
+{
+    agent any
+	
+	stages {
+	    stage('Build') {
+		   steps {
+	           sh 'make'
+		   }
+        }
+		stage('Test'){
+		   steps {
+	           sh 'make check'	   
+			   junit 'reports/**/*.xml'
+           }
+        }
+		stage('Deploy') {
+		    steps {
+			   sh 'make publish'
+			}
+        }
+	}	
+}
+
+
+node {
+  stage('echo') {
+     sh 'echo "Hello World"'
+	 sh '''
+	    echo "Multiline"
+		ls -lah
+	'''
+  }
+}
+
+node {
+   stage('Checkout') {
+      git 'url'   
+   }
+   stage('Say Hello') {
+      sh "./hello.sh"
+   }
+}
+==================================================================================================================================
+####### Add credentials
+####### use the new credentila id on the pipeline
+
+node {
+    stage('use passwords') {
+	   withCredentials([
+	        usernameColonPaswword(credentialsId:'my_id_1'
+			variable:'MY_CREDENTIALS_1')]){
+			echo "MY_PASSWORD is '${MY_CREDENTIALS_1}'!"
+	   }
+	}
+
+}
+=================================================================================================================================
+
+# Handling error in the scripted pipeline
+# Adding a post build step
+# Exploring  notification system with Jenkins Pipeline.
+
+Declarative pipeline :
+
+pipeline {
+   agent {
+      label 'linux'
+   
+   }
+   stages {
+      stage {
+         .....
+      }
+   
+   }
+   post {
+     always {
+	   echo "Pipeline executed"
+	 }
+   }
+}
+    
+Directives :
+
+- triggers : automatically triggers the pipeline based on the definition.
+- Parameters : defines one or more parameter which an user should provide when triggering the pipeline .
+- tools : defines the tools configured in the Jenkins.
+- Stage : inside of stage section; contain steps and agent.
+- When : gives control to what should be executed in  the pipeline.
+
+pipeline {
+   agent any
+   tools {
+      maven 'M3'
+   }
+   parameters {
+      string(name: 'VERSION'
+	         defaultValue: '1.0.0'
+			 description: 'What is the version to build')
+
+   }
+   stages {
+      stage('Build') {
+	     steps {
+		    sh "./build.sh ${{params.VERSION}"
+		 }
+	  }
+   }
+
+}

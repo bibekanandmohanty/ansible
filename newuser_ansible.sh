@@ -11,3 +11,4 @@ echo "$username    ALL=(ALL)       NOPASSWD:ALL" >> /etc/sudoers
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 service sshd restart
 hostnamectl set-hostname client
+yum -y install maven
