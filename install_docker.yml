@@ -1,0 +1,26 @@
+---
+ - hosts: all
+   become: yes
+   tasks:
+   - yum:
+        name: "{{ item }}"
+        state: latest
+     loop:
+        - yum-utils
+        - device-mapper-persistent-data
+   - get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+   - yum:
+        name: docker-ce
+        state: present
+   - service:
+        name: docker
+        enabled: yes
+        state: started
+   - shell:
+        cmd: sudo docker run hello-world
+     register: OUT
+   - debug:
+        var: OUT
