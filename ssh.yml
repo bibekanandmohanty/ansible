@@ -14,21 +14,47 @@
         owner: test
         group: test
    - copy:
-        src: /root/ansible/id_rsa
+        src: /home/test/id_rsa
         dest: /home/test/.ssh
-        mode: 777
         owner: test
         group: test
    - copy:
-        src: /root/ansible/id_rsa.pub
+        src: /home/test/id_rsa.pub
         dest: /home/test/.ssh
         mode: 644
         owner: test
         group: test
    - shell: cat /home/test/.ssh/id_rsa.pub >> /home/test/.ssh/authorized_keys
-   - file:
-        path: /home/test/.ssh/id_rsa
-        mode: 0400
-        owner: test
-        group: test
-        
+   - shell: chmod 400 /home/test/.ssh/id_rsa
+ - hosts: tomcat
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: "*"
+        state: latest
+   - yum:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - tomcat-webapps
+        - tomcat-admin-webapps
+        - tomcat-docs-webapp
+        - tomcat-javadoc
+        - java-1.8.0-openjdk-devel
+   - copy:
+        src: /home/test/tomcat-users.xml
+        dest: /etc/tomcat/tomcat-users.xml
+   - service:
+        name: tomcat
+        state: restarted
+ - hosts: maven
+   gather_facts: false
+   become: yes
+   tasks:
+   - yum:
+        name: "{{ item }}"
+        state: present
+     loop:
+        - maven
+        - git
