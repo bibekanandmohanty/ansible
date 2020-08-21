@@ -1,0 +1,53 @@
+pipeline {
+   agent none
+   stages {
+        stage(install){
+		   agent { label 'jenkins' }
+		   steps{
+		     sh 'ansible-playbook /home/test/install.yml'
+		   }
+		 }
+		stage('checkout') {
+		   agent { label 'maven' }
+           steps {
+             git 'https://github.com/spring-petclinic/spring-framework-petclinic.git'
+           }
+        }
+        stage('Build') {
+		    agent { label 'maven' }
+            steps {
+             sh 'mvn clean compile'
+            }
+        }
+        stage('test') {
+		    agent { label 'maven' }
+            steps {
+             sh 'mvn test'
+             junit '**/target/surefire-reports/*.xml'
+            }
+        }
+        stage('Package') {
+		    agent { label 'maven' }
+            steps {
+              sh 'mvn package'
+            }
+        } 
+		stage('Deploy') {
+		    agent { label 'maven' }
+            steps {
+              sshagent(['maven_cred']) {
+                 sh 'scp -o StrictHostKeyChecking=no /home/test/workspace/spring/target/petclinic.war test@172.31.3.187:/usr/share/tomcat/webapps'
+              }
+            }
+        } 
+		stage('Deploy') {
+		    agent { label 'maven' }
+            steps {              
+                 sh 'scp -o StrictHostKeyChecking=no /home/test/workspace/spring/target/petclinic.war test@172.31.3.187:/home/test'
+				 sh 'ssh test@172.31.3.187 sudo mv /home/test/petclinic.war /usr/share/tomcat/webapps'
+              
+            }
+        } 
+	    
+   }
+}
