@@ -27,8 +27,8 @@ echo "   StrictHostKeyChecking no" >> /home/test/.ssh/config
 chown -R test:test /home/test/.ssh/
 chmod 400 /home/test/.ssh/config
 service sshd restart
-wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins.io/redhat/jenkins.repo
-rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 yum install jenkins -y
 systemctl start jenkins
 chkconfig jenkins on
