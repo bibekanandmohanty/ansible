@@ -1,0 +1,100 @@
+A. GIT
+B. Jenkins
+C. Saltsatck
+D. Docker
+E. Ansible
+F. Chef
+G. Python (Basics)
+H. Shell (Basics)
+I. Apache
+J. Nginx
+K. Foreman
+L. Mysql Server Administration ,Tuning and Replication.
+M. Puppet (Basics)
+N. DNS
+O. Nagios
+P. AWS
+Q. Networking
+****************************************************************************************************************************************************************
+****************************************************************************************************************************************************************
+DEVOPS :
+=========
+https://medium.com/edureka/devops-interview-questions-e91a4e6ecbf3
+https://www.youtube.com/playlist?list=PLPtU0T3LVUpW3bfBD78hXQA1nEwVj9oD2
+https://www.youtube.com/watch?v=i7YJesoeWFI&list=PLLYW3zEOaqlLShAk9pd4FQ34KOpY7EJAq
+https://www.youtube.com/playlist?list=PL10Ao--Mok8OyyqHpdy14MT9htjw7pKXi
+
+
+JENKINS :
+==========
+
+https://www.softwaretestingo.com/jenkins-real-time-interview-questions/
+https://www.bitdegree.org/tutorials/jenkins-interview-questions/
+https://www.softwaretestinghelp.com/jenkins-interview-questions/
+https://cdn.ttgtmedia.com/ITKE/uploads/blogs.dir/319/files/2018/09/Jenkins-interview-questions-and-answers-for-experienced-pdf.pdf
+https://mindmajix.com/jenkins-interview-questions-answers
+https://www.wisdomjobs.com/e-university/jenkins-interview-questions.html
+https://hackr.io/blog/jenkins-interview-questions
+https://www.knowledgehut.com/interview-questions/jenkins
+https://codingcompiler.com/jenkins-interview-questions-answers/
+https://svrtechnologies.com/top-20-devops-jenkins-interview-questions-and-answers-pdf/
+https://www.interviewgig.com/maven-interview-questions-and-answers/
+https://www.interviewgig.com/jenkins-interview-questions-and-answers/
+https://medium.com/edureka/jenkins-interview-questions-7bb54bc8c679
+https://www.edureka.co/blog/wp-content/uploads/2018/10/Jenkins-Cheat-Sheet-Edureka.pdf
+https://medium.com/edureka/jenkins-pipeline-tutorial-continuous-delivery-75a86936bc92
+https://medium.com/edureka/jenkins-interview-questions-7bb54bc8c679
+
+ANSIBLE :
+==========
+https://www.simplilearn.com/tutorials/ansible-tutorial/ansible-interview-questions
+https://www.edureka.co/blog/interview-questions/ansible-interview-questions/
+https://mindmajix.com/ansible-interview-questions
+https://www.guru99.com/ansible-interview-questions.html
+https://codingcompiler.com/ansible-interview-questions/
+https://www.knowledgehut.com/interview-questions/ansible
+https://tekslate.com/ansible-interview-questions
+https://www.algrim.co/142-ansible-interview-questions
+https://www.javatpoint.com/ansible-interview-questions
+https://www.zeolearn.com/interview-questions/ansible
+https://www.interviewgig.com/ansible-interview-questions-and-answers/
+
+CHEF :
+======
+https://codingcompiler.com/chef-interview-questions-answers/
+https://tekslate.com/interview-questions-on-chef-devops
+https://www.janbasktraining.com/blog/chef-interview-questions/
+https://www.wisdomjobs.com/e-university/devops-chef-interview-questions.html
+https://www.janbasktraining.com/blog/chef-interview-questions/
+https://svrtechnologies.com/top-30-chef-devops-interview-questions-and-answers-pdf/
+https://www.gangboard.com/blog/chef-interview-questions-and-answers
+https://www.kitsonlinetrainings.com/chef-software-interview-questions.html
+https://www.zeolearn.com/interview-questions/chef
+https://www.interviewgig.com/chef-interview-questions-and-answers/
+
+SALTSTACK :
+===========
+https://www.interviewgig.com/saltstack-interview-questions-and-answers/
+https://mindmajix.com/saltstack-interview-questions
+https://smconsultant.com/saltstack-interview-questions-and-answers/
+https://codingcompiler.com/saltstack-interview-questions-answers/
+https://svrtechnologies.com/best-15-devops-saltstack-interview-questions-and-answers-pdf/
+
+DOCKER :
+========
+https://medium.com/edureka/docker-interview-questions-da0010bedb75
+https://medium.com/edureka/docker-commands-29f7551498a8
+https://tekslate.com/docker-interview-questions
+https://mindmajix.com/docker-interview-questions
+https://intellipaat.com/blog/interview-question/docker-interview-questions-answers/
+https://www.zeolearn.com/interview-questions/docker
+https://www.guru99.com/docker-interview-questions.html
+https://www.knowledgehut.com/interview-questions/docker
+https://www.qaautomation.co.in/2019/07/top-docker-interview-questions-answers.html
+http://aptronnoida.in/iqa/best-docker-interview-questions-answers/
+
+PUPPET :
+========
+https://medium.com/edureka/puppet-tutorial-848861e45cc2
+
+
