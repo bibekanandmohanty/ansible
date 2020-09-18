@@ -1,0 +1,49 @@
+FROM : The FROM instruction initializes a new build stage and sets the base image for subesquen instructions.
+A valid dockerfile must start with a FROM instruction .
+
+Format : FROM <image>:[<tag>]
+
+FROM: Specifies the base image to use. It is preferable to use alpine image as base image
+because the size is very small & the resultant image will also be of small size as compared to
+using ubuntu, debian, centos as base image.
+
+COPY: Copies files from Host OS to image
+
+EXPOSE: specifies which ports to open on the container to handle incoming requests. You can
+specify –p or –P with “docker container run” to map this port with some fixed or random port at
+host os.
+
+CMD: specifies the command to run on container creation.
+CMD instruction should be used to run the software contained by your image , along with any args.
+CMD ["executable","param1","param2"]
+There can be only one cmd instruction in a Dockerfile. If you list more than one CMD then only the last CMD will take effect.
+
+ADD: allow you to copy files from host to image. It is same as COPY with some additional
+support. It let you specify tar files and url as source.
+ADD : This instruction copies new files , ddirectories or remote file URLs from <src> and adds them to the filesystem of the image at the path <dest>
+
+ADD hom* /mdir/
+
+
+Most of the keywords are used when image is created from Dockerfile but CMD & ENTRYPOINT
+keywords are used when container is launched using that image. If ENTRYPOINT is not defined, it
+will have default value “/bin/sh -c” & what ever is defined in CMD will be treated as argument.
+
+RUN: Execute commands in container
+Run Instruction will execute any commands in a new layer on top of the current image and commit the results.
+The resulting commited image will be used for the next step in the Dockerfile.
+
+WORKDIR: Set working directory . Sets the working directory for any RUN,CMD,ADD instructions that follow it in the docker file.
+
+ENV: Set environment variables for the application.
+
+VOLUME: Create Volume mount point
+
+ENTRYPOINT: Command specified here will
+always be run on container creation.
+
+MAINTAINER: The person responsible for
+maintaining this Dockerfile. Deprecated
+
+LABEL: Used for specifying metadata
+LABEL is added to image to organize images used in a project

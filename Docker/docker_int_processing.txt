@@ -1,0 +1,20 @@
+- When we run a container then :
+    looks for the image in the cache
+    then looks in remote docker repo ( defaults hub.docker.com )
+    Downloads the latest version of the image
+    Create new container based on the image
+    Gives it a virtual IP on pvt network inside docker engine
+
+Containers v/s Vms
+
+➤ Containers and virtual machines both have similar resource
+allocation and allocation benefits.
+➤ Containers and VMs are functionally different because
+containers virtualise the Operating System and VMs are
+virtualise the hardware.
+➤ Containers are more portable
+
+Containers are not VMs
+➤ Containers are just processes.
+➤ Containers are limited what resources they can access.
+➤ Exit when process exits.

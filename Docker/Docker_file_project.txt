@@ -1,0 +1,33 @@
+Project Jenkins File Content:
+pipeline {
+    agent any
+    stages {
+        stage('Build Application') {
+            steps {
+                sh 'mvn -f pom.xml clean package'
+            }
+            post {
+                success {
+                    echo "Now Archiving the Artifacts...."
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
+        }
+ 
+        Stage('Create Tomcat Docker Image'){
+            steps {
+                sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
+            }
+        }
+ 
+    }
+}
+
+Project's Dockerfile Content :
+FROM tomcat:8.0
+
+ADD **/*.war /usr/local/tomcat/webapps
+
+EXPOSE 8080
+
+CMD ["catalina.sh", "run"]

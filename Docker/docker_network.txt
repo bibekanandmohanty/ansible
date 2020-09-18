@@ -1,0 +1,53 @@
+➤ Docker containers and services can be connected with each
+other.
+➤ Containers and Services don’t need to be aware, where they
+are deployed.
+➤ Container and Services can communicate, Whether your
+Docker hosts run Linux, Windows, or a mix of the two.
+➤ This all possible because of default drivers in Docker.
+
+➤ Each Container connect to virtual private network called
+‘bridge’.
+➤ bridge : This is default Network driver of Docker.
+➤ All Containers on same bridge can communicate each other
+with-out -p (port)
+➤ Best Practice to create Networks :
+network “sql_php_nwt” for mySQL and PHP Containers
+network “mongo_nwt” for mongo and PHP Containers
+
+➤ Docker Network is easy to Plugged-in in Containers.
+➤ User is allow to Create Multiple VPN.
+➤ Create Multiple Rules for Single Network.
+➤ Attach Multiple Containers to One Network, and Attach
+single container to more than One Network or no need to
+attach any network to container.
+
+➤ Show All networks
+docker network ls
+➤ Lists all the networks the Engine daemon knows about.
+➤ We can filter the Networks
+To Filter all bridge network
+docker network ls -f drive=bridge
+➤ To find all Network IDs and Drivers
+docker network ls --format "{{.ID}}: {{.Driver}}
+
+➤ Inspect any Network
+docker network inspect
+
+➤ Returns information about one or more networks. By default,
+this command renders all results in a JSON object.
+
+➤ Create New Network on Host Machine
+docker network create
+➤ Above command creates ‘bridge’ network by default.
+➤ Create a bridge network
+docker network create -d bridge my-bridge-network
+
+➤ Connect Network with Container
+docker network connect network1 container1
+➤ Connects a container to a network. You can connect a
+container by name or by ID.
+➤ After connection, the container can communicate with other
+containers in the same network.
+
+
