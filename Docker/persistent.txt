@@ -1,0 +1,59 @@
+Persistent storage means that
+your data is still there when you
+delete the container.
+There are 2 ways to implement
+persistent storage:
+- Bind mounts
+- Volumes
+
+Bind Mount :
+docker container run -d --name web -p 8080:80 -v /webdata:/usr/share/nginx/html nginx
+
+In bind mount, you can store data anywhere on your host filesystem. The path given is always absolute
+path. This path is then mounted inside the container.
+
+docker voume create ourvol1
+This will create the vome in /var/lib/docker/volumes folder
+
+Volumes :
+docker container run -it --name c1 -v ourvol1:/ourvol1 alpine
+
+In volumes, data is stored in special area by docker itself. The area is “/var/lib/docker/volumes”. This area
+is managed itself by docker. This volume can be accessed by specifying absolute path inside the container.
+
+
+docker voume creation during docker creation
+This will create the volume in /var/lib/docker/volumes folder
+docker run -it --name c2 -v ourvol2:/ourvol2 alpine
+
+docker volume ls ===== to list the volumes
+docker volume rm <volume_name>
+
+Sharing data between containers :
+docker run -it --name=c3 -v ourvol3:/ourvol3 alpine
+docker run -it --name=c4 --volumes-from c3 alpine
+docker run -it --name=c4 --volumes-from c4 alpine
+
+Using bind mounts :
+mkdir /webdata
+cd /webdata
+cat > index.html
+Hello this is bibekanand
+docker container run -d --name apache -v /webdata:/usr/local/apache2/htdocs -p 80:80 httpd
+
+docker container inspect apache | grep -A 10 Mounts
+docker container run -d --name apache --mount type=bind,source=/webdata,target=/usr/local/apache2/htdocs -p 80:80 httpd
+
+Using bind mount in read-only mode :
+docker container run -d --name nginx -v /webdata:/usr/share/nginx/html:ro -p 80:80 nginx:alpine
+
+
+
+docker container run -d --name apache --mount type=bind,source=/webdata,target=/usr/local/apache2/htdocs -p 80:80 httpd
+
+Passing parameters in docker run :
+docker container run -d --name db -e MYSQL_ROOT_PASSWORD=123456 mariadb
+docker container exec -it db mysql ---user=root --password=123456 bash
+
+
+

@@ -38,6 +38,18 @@ docker container run -d -p 3306:3306 --env MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
 docker exec -it <container_id> bash
 docker exec -it <container_id> command 
 
+docker image build -t curl_alpine .
+docker image save -o curl_alpine.tar curl_alpine
+docker image load -i curl_alpine.tar
+
+# docker login
+# docker image tag curl vipin2411/curl:latest
+# docker image push vipin2411/curl:latest
+# docker container run -it vipin2411/curl:latest
+
+
+
+
 Containers CLI Monitoring & Inspection
 ➤ Whats going on Inside the Running Container
 ➤ docker container top : Process List in one container

@@ -51,3 +51,45 @@ container by name or by ID.
 containers in the same network.
 
 
+Single host networking :
+host
+bridge
+none
+container network mode
+
+Multihost Networking :
+Overlay
+
+By default docker creates a bridge named as docker0
+Ip address range is : 172.17.0.1/16 to 172.17.255.255/16
+
+A docker chain is created in the IPTABLES
+
+docker container run -it --name c2 --net=bridge alpine ======================= This will create a container with a bridge generated IP
+docker container run -it --name c2 --net=host alpine ======================= This will create a container with the same IP as that of the host (Host IP = container IP)
+docker container run -it --name c2 --net=none alpine ======================= This will create a container with no IP associated
+
+Container network :
+# docker container run -d --name apache --net=bridge -P httpd
+# docker container run -it --name curl --net=container:apache curl ========= This container will have the same IP as the bridged container as it has borrowed the ip from that.
+
+User-defined Networks :
+docker network create –driver bridge mynet
+docker container run -it --name c1 --net mynet alpine ash
+docker container run -it --name c2 --net mynet alpine ash
+
+User-defined Networks (Custom-Subnet) :
+# docker network create –driver bridge –subnet “10.20.0.0/16” ournet
+# docker container run -d --name web --net ournet -p 80:80 httpd
+# docker container run -it --name curl --net ournet curl
+
+User-defined Networks (Container Network Mode) :
+# docker network create –driver bridge yournet
+# docker container run -d --name web --net yournet -p 80:80 httpd
+# docker container run -it --name curl --net container:web curl
+
+
+
+
+
+
