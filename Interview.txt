@@ -45,6 +45,8 @@ https://www.edureka.co/blog/wp-content/uploads/2018/10/Jenkins-Cheat-Sheet-Edure
 https://medium.com/edureka/jenkins-pipeline-tutorial-continuous-delivery-75a86936bc92
 https://medium.com/edureka/jenkins-interview-questions-7bb54bc8c679
 https://www.youtube.com/playlist?list=PLhW3qG5bs-L_ZCOA4zNPSoGbnVQ-rp_dG
+
+
 ANSIBLE :
 ==========
 https://www.simplilearn.com/tutorials/ansible-tutorial/ansible-interview-questions
@@ -93,9 +95,18 @@ https://www.knowledgehut.com/interview-questions/docker
 https://www.qaautomation.co.in/2019/07/top-docker-interview-questions-answers.html
 http://aptronnoida.in/iqa/best-docker-interview-questions-answers/
 https://www.youtube.com/playlist?list=PLhW3qG5bs-L99pQsZ74f-LC-tOEsBp2rK
+
 PUPPET :
 ========
 https://medium.com/edureka/puppet-tutorial-848861e45cc2
 https://www.youtube.com/watch?v=JaVb-VRlihg
 https://www.youtube.com/watch?v=h4Sl21AKiDg
 https://www.youtube.com/playlist?list=PLhW3qG5bs-L8OlICbNX9u4MZ3rAt5c5GG
+
+
+
+
+https://devopscube.com/what-is-docker/?fbclid=IwAR3OV1RXSFU2pYZF25PgPnik5yauS2aDOISZqx2Q5FuALd_T9_x4ry5VRro
+https://devopscube.com/jenkins-2-tutorials-getting-started-guide/
+https://devopscube.com/jenkins-pipeline-as-code/
+https://devopscube.com/jenkins-multibranch-pipeline-tutorial/
