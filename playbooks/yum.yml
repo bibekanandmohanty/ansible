@@ -1,0 +1,15 @@
+---
+ - hosts: all
+   gather_facts: false
+   tasks:
+    - yum:
+        name: httpd
+        state: present
+    - service:
+        name: httpd
+        state: started
+    - shell: systemctl status httpd
+      register: service
+    - debug: 
+        var: service.stdout
+                    

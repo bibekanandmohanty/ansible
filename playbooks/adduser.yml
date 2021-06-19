@@ -1,0 +1,9 @@
+---
+ - hosts: all
+   gather_facts: false
+   tasks:
+    - user:
+        name: bibek
+        shell: /bin/bash
+        comment: user bibek
+        group: root
