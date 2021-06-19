@@ -14,9 +14,9 @@
         var: service.stdout
     - copy:
         content: hello this is a file created by bibekanand
-        dest: /var/www/html/index.html
+        dest: /var/www/html/ndex.html
     - service:
         name: httpd
-        state: restarted
+        state: restart
 
                     
